@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us | Global Station</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Smooth scrolling and modern selection */
+        html { scroll-behavior: smooth; }
+        ::selection { background: #6366f1; color: white; }
+        
+        /* Subtle Background Grid Pattern */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(99, 102, 241, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans overflow-x-hidden relative flex flex-col min-h-screen">
+
+    <!-- Global Background Grid & Glowing Orbs -->
+    <div class="fixed inset-0 bg-grid-pattern z-[-2]"></div>
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden z-[-1] pointer-events-none">
+        <div class="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] bg-indigo-400/10 rounded-full blur-[100px]"></div>
+        <div class="absolute top-[40%] -right-[10%] w-[40vw] h-[40vw] bg-rose-400/10 rounded-full blur-[100px]"></div>
+    </div>
+    
+    <!-- Premium Bright Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <!-- Professional Logo & Slogan Combo -->
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 bg-gradient-to-tr from-indigo-600 to-rose-500 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-all duration-300">
+                    <i class="fa-solid fa-globe text-white text-2xl"></i>
+                </div>
+                <div class="flex flex-col text-left">
+                    <span class="text-2xl font-black tracking-widest text-slate-900 leading-tight">
+                        GLOBAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-500">STATION</span>
+                    </span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">
+                        Your Digital Media Stop
+                    </span>
+                </div>
+            </a>
+
+            <!-- Nav Links -->
+            <div class="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-widest font-bold">
+                <a href="index.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Home</a>
+                <a href="about.html" class="text-slate-500 hover:text-indigo-600 transition-colors">About</a>
+                <a href="services.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Services</a>
+                <a href="portfolio.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Portfolio</a>
+                <a href="pricing.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Pricing</a>
+                <a href="team.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Team</a>
+                <a href="faq.html" class="text-slate-500 hover:text-indigo-600 transition-colors">FAQ</a>
+                <a href="testimonials.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Reviews</a>
+                <a href="blog.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Blog</a>
+                <a href="contact.html" class="text-indigo-600 border-b-2 border-indigo-600 pb-1">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ultra-Modern Hero Section -->
+    <header class="pt-40 pb-20 px-6 relative z-10">
+        <div class="container mx-auto text-center max-w-4xl">
+            <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+                <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-slate-700">Enterprise Partnerships</span>
+            </span>
+            
+            <h2 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter text-slate-900 leading-[1.1]">
+                Let's Build & Scale <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-500 drop-shadow-sm">Together</span>
+            </h2>
+            
+            <p class="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto font-medium">
+                Ready to transform your business? Provide us with your project details below, and our engineering or marketing experts will get back to you within 24 hours.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto flex-grow px-6 pb-32 max-w-7xl relative z-10">
+
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+
+            <!-- Left Side: Contact Info -->
+            <div class="w-full lg:w-4/12 flex flex-col justify-center sticky top-32">
+                <h3 class="text-4xl font-black text-slate-900 mb-6 tracking-tight">Start Your Digital Transformation.</h3>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed font-medium">
+                    Global Station isn't just an agency; we are your technology and growth partners. Tell us about your vision.
+                </p>
+
+                <div class="space-y-8">
+                    <div class="flex items-start group">
+                        <div class="w-14 h-14 bg-white border border-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-xl shadow-sm mr-5 group-hover:scale-110 group-hover:bg-indigo-50 transition-all duration-300">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-black text-slate-900">Headquarters</h4>
+                            <p class="text-slate-600 font-medium mt-1 leading-relaxed">Office Number 3-5, First Floor Murat Khan<br> centre 4 Montgomery Road, Lahore</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start group">
+                        <div class="w-14 h-14 bg-white border border-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-xl shadow-sm mr-5 group-hover:scale-110 group-hover:bg-rose-50 transition-all duration-300">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-black text-slate-900">Direct Contact</h4>
+                            <p class="text-slate-600 font-medium mt-1 leading-relaxed">+92 321 289 5218<br>+92 318 442 2191</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start group">
+                        <div class="w-14 h-14 bg-white border border-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-xl shadow-sm mr-5 group-hover:scale-110 group-hover:bg-purple-50 transition-all duration-300">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-black text-slate-900">Email Us</h4>
+                            <p class="text-slate-600 font-medium mt-1"> Marketing@globalstation.org</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 pt-8 border-t border-slate-200">
+                        <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-5">Our Departments</h4>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="bg-indigo-50 text-indigo-700 px-5 py-2.5 rounded-xl text-xs font-black tracking-wider uppercase border border-indigo-100"><i class="fa-solid fa-code mr-2"></i>Engineering</span>
+                            <span class="bg-rose-50 text-rose-700 px-5 py-2.5 rounded-xl text-xs font-black tracking-wider uppercase border border-rose-100"><i class="fa-solid fa-chart-line mr-2"></i>Marketing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Premium Glass Contact Form -->
+            <div class="w-full lg:w-8/12">
+                <div class="bg-white/80 backdrop-blur-xl p-10 md:p-12 rounded-[2.5rem] shadow-[0_20px_50px_rgba(99,102,241,0.05)] border border-white relative overflow-hidden group hover:shadow-[0_20px_60px_rgba(99,102,241,0.1)] transition-all duration-500">
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-indigo-500/10 to-rose-500/10 rounded-full blur-3xl -z-10 group-hover:scale-150 transition-transform duration-700"></div>
+
+                    <div class="mb-10">
+                        <h3 class="text-3xl font-black text-slate-900 mb-2 tracking-tight">Project Inquiry</h3>
+                        <p class="text-slate-500 font-medium">Please fill out the form below so we can direct you to the right department.</p>
+                    </div>
+
+                    <form id="contactForm" class="space-y-8" onsubmit="return handleFormSubmit(event)">
+                        
+                        <!-- Error Banner -->
+                        <div id="errorBanner" class="hidden bg-red-50 border-l-4 border-red-500 p-4 rounded-2xl text-red-700 text-sm font-bold shadow-sm">
+                            <i class="fa-solid fa-triangle-exclamation mr-2"></i> <span id="errorText">Please correct the errors below.</span>
+                        </div>
+
+                        <!-- Section 1: Personal Details -->
+                        <div class="border-b border-slate-100 pb-8">
+                            <h4 class="text-xs font-black uppercase tracking-widest text-indigo-600 mb-6 bg-indigo-50 inline-block px-4 py-1.5 rounded-full">1. Your Details</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-slate-700 text-xs font-black uppercase tracking-wider mb-2 ml-1">Full Name <span class="text-rose-500">*</span></label>
+                                    <input type="text" name="name" required placeholder="John Doe" class="w-full px-5 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 focus:bg-white transition-all text-slate-800 font-medium">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-700 text-xs font-black uppercase tracking-wider mb-2 ml-1">Work Email <span class="text-rose-500">*</span></label>
+                                    <input type="email" id="emailInput" name="email" required placeholder="john@company.com" class="w-full px-5 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 focus:bg-white transition-all text-slate-800 font-medium">
+                                    <p id="emailError" class="text-xs font-bold text-rose-500 mt-2 ml-1 hidden">Please enter a valid email address.</p>
+                                </div>
+                                <div>
+                                    <label class="block text-slate-700 text-xs font-black uppercase tracking-wider mb-2 ml-1">Phone Number <span class="text-rose-500">*</span></label>
+                                    <input type="tel" id="phoneInput" name="phone" required placeholder="+92 300 1234567" class="w-full px-5 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 focus:bg-white transition-all text-slate-800 font-medium">
+                                    <p id="phoneError" class="text-xs font-bold text-rose-500 mt-2 ml-1 hidden">Please enter a valid phone number.</p>
+                                </div>
+                                <div>
+                                    <label class="block text-slate-700 text-xs font-black uppercase tracking-wider mb-2 ml-1">Company Name</label>
+                                    <input type="text" name="company" placeholder="e.g. Acme Corp" class="w-full px-5 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 focus:bg-white transition-all text-slate-800 font-medium">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Project Details -->
+                        <div>
+                            <h4 class="text-xs font-black uppercase tracking-widest text-indigo-600 mb-6 bg-indigo-50 inline-block px-4 py-1.5 rounded-full">2. Project Details</h4>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-slate-700 text-xs font-black uppercase tracking-wider mb-2 ml-1">Required Service <span class="text-rose-500">*</span></label>
+                                    <select name="service" required class="w-full px-5 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 focus:bg-white transition-all text-slate-700 font-medium cursor-pointer appearance-none">
+                                        <option value="" disabled selected>Select primary service...</option>
+                                        <option value="web_dev">Web Engineering (Node/React)</option>
+                                        <option value="app_dev">Mobile App (Flutter)</option>
+                                        <option value="marketing">Digital Marketing & SEO</option>
+                                        <option value="data_ai">Business Intelligence & Analytics</option>
+                                        <option value="hybrid">Hybrid (Tech + Marketing)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 text-xs font-black uppercase tracking-wider mb-2 ml-1">Estimated Budget <span class="text-rose-500">*</span></label>
+                                    <select name="budget" required class="w-full px-5 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 focus:bg-white transition-all text-slate-700 font-medium cursor-pointer appearance-none">
+                                        <option value="" disabled selected>Select budget range...</option>
+                                        <option value="under_1k">Under $1,000</option>
+                                        <option value="1k_to_5k">$1,000 - $5,000</option>
+                                        <option value="5k_to_10k">$5,000 - $10,000</option>
+                                        <option value="10k_plus">$10,000+</option>
+                                        <option value="retainer">Monthly Retainer</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-slate-700 text-xs font-black uppercase tracking-wider mb-2 ml-1">Project Brief <span class="text-rose-500">*</span></label>
+                                <textarea name="message" rows="5" required placeholder="Please describe your project, goals, and any specific requirements or timelines..." class="w-full px-5 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 focus:bg-white transition-all resize-none text-slate-800 font-medium"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-4">
+                            <button type="submit" id="submitBtn" class="w-full md:w-auto px-12 bg-gradient-to-r from-indigo-600 to-rose-600 text-white font-black uppercase tracking-widest py-4 rounded-2xl hover:shadow-[0_10px_20px_rgba(99,102,241,0.3)] hover:-translate-y-1 transition-all duration-300 flex justify-center items-center group">
+                                Submit Inquiry <i class="fa-solid fa-paper-plane ml-3 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                            </button>
+                            <p class="text-xs font-bold text-slate-400 mt-4 text-center md:text-left"><i class="fa-solid fa-shield-halved mr-1 text-indigo-400"></i> Your information is strictly confidential and protected.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Crisp Professional Footer -->
+    <footer class="bg-slate-900 text-slate-400 p-12 mt-auto border-t border-slate-800 relative z-10">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl">
+            
+            <div class="text-center md:text-left">
+                <!-- Professional Logo & Slogan Combo -->
+                <a href="index.html" class="flex items-center justify-center md:justify-start space-x-3 group mb-6">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-indigo-600 to-rose-500 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-all">
+                        <i class="fa-solid fa-globe text-white text-lg"></i>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <span class="text-lg font-black tracking-wider text-white leading-tight">
+                            GLOBAL <span class="text-rose-400">STATION</span>
+                        </span>
+                        <span class="text-[9px] uppercase tracking-widest text-indigo-300 font-semibold">
+                            Your Digital Media Stop
+                        </span>
+                    </div>
+                </a>
+                
+                <p class="text-sm mb-3 font-medium flex items-center justify-center md:justify-start"><i class="fa-solid fa-location-dot mr-3 text-cyan-400 w-4"></i> Office Number 3-5, First Floor Murat Khan centre , 4 Montgomery Road Lahore</p>
+                <p class="text-sm mb-3 font-medium flex items-center justify-center md:justify-start"><i class="fa-solid fa-envelope mr-3 text-cyan-400 w-4"></i>Marketting@globalstation.org | www.globalstation.org</p>
+                <p class="text-sm font-medium flex items-center justify-center md:justify-start"><i class="fa-solid fa-phone mr-3 text-cyan-400 w-4"></i>+92 321 289 5218 | +92 318 442 2191</p>
+            </div>
+            
+            <div class="flex space-x-6 items-center">
+                <a href="https://www.facebook.com/profile.php?id=61593209751314" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-cyan-500 hover:text-slate-900 transition-all duration-300 text-xl"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/globalstation34/" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-rose-500 hover:text-white transition-all duration-300 text-xl"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/GlobalStation34" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 text-xl"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="linkedin.com/company/global-satition-34" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-indigo-500 hover:text-white transition-all duration-300 text-xl"><i class="fa-brands fa-linkedin-in"></i></a>
+                <span class="text-slate-700">|</span>
+                <a href="#" target="_blank" class="hover:text-green-400 transition-colors duration-300 font-bold text-xl flex items-center" title="Fiverr"><i>fi</i>verr.</a>
+                <a href="https://www.upwork.com/freelancers/~01f09a39c3a6b95fa4?mp_source=share" target="_blank" class="hover:text-green-500 transition-colors duration-300 font-bold text-xl flex items-center" title="Upwork">Upwork</a>
+            </div>
+        </div>
+        <div class="text-center mt-10 pt-8 border-t border-slate-800 text-sm font-bold tracking-wide">
+            <p>&copy; 2026 Global Station. Innovation in Digital Media Marketing.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/923212895218?text=Hi%20Global%20Station,%20I%20need%20help%20with%20a%20project!" 
+       target="_blank" 
+       class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-xl hover:bg-green-600 hover:scale-110 transition-transform duration-300 z-50 flex items-center justify-center text-3xl w-16 h-16">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript Validation Script -->
+    <script>
+        async function handleFormSubmit(event) {
+    event.preventDefault(); 
+
+    const formData = {
+        name: document.querySelector('input[name="name"]').value,
+        email: document.getElementById('emailInput').value,
+        phone: document.getElementById('phoneInput').value,
+        company: document.querySelector('input[name="company"]').value,
+        service: document.querySelector('select[name="service"]').value,
+        budget: document.querySelector('select[name="budget"]').value,
+        message: document.querySelector('textarea[name="message"]').value
+    };
+
+    try {
+        const response = await fetch('http://localhost:5000/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        if(result.success) {
+            alert("Inquiry sent successfully! We will contact you within 24 hours.");
+            document.getElementById('contactForm').reset();
+        } else {
+            alert("Something went wrong. Please try again.");
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Server connection failed.");
+    }
+    return false;
+
+        }
+    </script>
+</body>
+</html>
