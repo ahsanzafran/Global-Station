@@ -1,239 +1,769 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Global Station | Digital Media Agency & Software House</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Station | Digital Media Agency &amp; Software House</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <style>
-        /* Smooth scrolling and modern selection */
-        html { scroll-behavior: smooth; }
-        ::selection { background: #6366f1; color: white; }
-        
-        /* Subtle Background Grid Pattern */
-        .bg-grid-pattern {
-            background-image: radial-gradient(rgba(99, 102, 241, 0.15) 1px, transparent 1px);
-            background-size: 24px 24px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: #6366f1;
+            color: #fff;
+        }
+
+        /* ── Glassmorphism utilities ── */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* ── Grid pattern ── */
+        .bg-grid {
+            background-image:
+                radial-gradient(rgba(99, 102, 241, 0.10) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* ── Animated gradient text ── */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #ec4899, #6366f1);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* ── Float animation ── */
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-16px);
+            }
+        }
+        .float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .float-delay {
+            animation: float 6s ease-in-out infinite 1s;
+        }
+
+        /* ── Pulse ring ── */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+        }
+        .pulse-ring {
+            animation: pulse-ring 3s ease-in-out infinite;
+        }
+
+        /* ── Scroll reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Custom scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6366f1, #ec4899);
+            border-radius: 99px;
+        }
+
+        /* ── Nav link underline ── */
+        .nav-link {
+            position: relative;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            color: #64748b;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0%;
+            height: 2.5px;
+            background: linear-gradient(90deg, #6366f1, #ec4899);
+            border-radius: 99px;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #0f172a;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #6366f1;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* ── Card hover 3D tilt (light) ── */
+        .tilt-card {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+        }
+        .tilt-card:hover {
+            transform: translateY(-8px) scale(1.01);
+        }
+
+        /* ── Button shine ── */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(120deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent);
+            transform: rotate(25deg);
+            transition: left 0.7s ease;
+        }
+        .btn-shine:hover::after {
+            left: 100%;
+        }
+
+        /* ── Stat number counter ── */
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        /* ── Responsive tweaks ── */
+        @media (max-width: 640px) {
+            .stat-number {
+                font-size: 2.5rem;
+            }
         }
     </style>
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans overflow-x-hidden relative flex flex-col min-h-screen">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WFLRV2ECYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <!-- Global Background Grid & Glowing Orbs -->
-    <div class="fixed inset-0 bg-grid-pattern z-[-2]"></div>
-    <div class="fixed top-0 left-0 w-full h-full overflow-hidden z-[-1] pointer-events-none">
-        <div class="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] bg-indigo-400/10 rounded-full blur-[100px]"></div>
-        <div class="absolute top-[40%] -right-[10%] w-[40vw] h-[40vw] bg-rose-400/10 rounded-full blur-[100px]"></div>
+  gtag('config', 'G-WFLRV2ECYX');
+</script>
+
+    <!-- ─── MICROSOFT CLARITY ─── -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yd6362dj5a");
+</script>
+</head>
+<body>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!--  BACKGROUND ORBS  -->
+    <!-- ════════════════════════════════════════════ -->
+    <div class="fixed inset-0 bg-grid pointer-events-none z-[-2]"></div>
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
+        <div class="absolute -top-[20%] -left-[10%] w-[60vw] h-[60vw] bg-indigo-400/8 rounded-full blur-[120px]"></div>
+        <div class="absolute top-[30%] -right-[10%] w-[50vw] h-[50vw] bg-rose-400/8 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[10%] left-[20%] w-[40vw] h-[40vw] bg-cyan-400/6 rounded-full blur-[120px]"></div>
     </div>
-    
-    <!-- Premium Bright Navbar -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            
-            <!-- Professional Logo & Slogan Combo -->
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <div class="w-12 h-12 bg-gradient-to-tr from-indigo-600 to-rose-500 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-all duration-300">
-                    <i class="fa-solid fa-globe text-white text-2xl"></i>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!--  NAVBAR  -->
+    <!-- ════════════════════════════════════════════ -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass border-b border-white/40 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-600 to-rose-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-globe text-white text-xl"></i>
                 </div>
-                <div class="flex flex-col text-left">
-                    <span class="text-2xl font-black tracking-widest text-slate-900 leading-tight">
-                        GLOBAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-500">STATION</span>
+                <div class="hidden sm:block leading-tight">
+                    <span class="text-xl font-black tracking-wider text-slate-900">
+                        GLOBAL <span class="gradient-text">STATION</span>
                     </span>
-                    <span class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">
+                    <div class="text-[9px] uppercase tracking-[0.25em] text-slate-400 font-bold">
                         Your Digital Media Stop
-                    </span>
+                    </div>
                 </div>
             </a>
 
-            <!-- Nav Links -->
-            <div class="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-widest font-bold">
-                <a href="index.html" class="text-indigo-600 border-b-2 border-indigo-600 pb-1">Home</a>
-                <a href="about.html" class="text-slate-500 hover:text-indigo-600 transition-colors">About</a>
-                <a href="services.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Services</a>
-                <a href="portfolio.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Portfolio</a>
-                <a href="pricing.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Pricing</a>
-                <a href="team.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Team</a>
-                <a href="faq.html" class="text-slate-500 hover:text-indigo-600 transition-colors">FAQ</a>
-                <a href="testimonials.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Reviews</a>
-                <a href="blog.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Blog</a>
-                <a href="contact.html" class="text-slate-500 hover:text-indigo-600 transition-colors">Contact</a>
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="team.html" class="nav-link">Team</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="testimonials.html" class="nav-link">Reviews</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                
+                  <a href="privacy.html" class="nav-link active">Privacy</a>
+            </div>
+
+            <!-- CTA + Mobile toggle -->
+            <div class="flex items-center gap-3">
+                <a href="contact.html" class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-rose-500 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-105 transition-all duration-300 btn-shine">
+                    Start Project <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <button id="mobileToggle" class="lg:hidden w-10 h-10 rounded-xl bg-white/80 border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-indigo-50 transition-colors">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white/95 backdrop-blur-xl border-t border-slate-100">
+            <div class="px-6 py-4 flex flex-col gap-3 text-sm">
+                <a href="index.html" class="font-bold text-indigo-600">Home</a>
+                <a href="about.html" class="text-slate-600 hover:text-indigo-600 transition">About</a>
+                <a href="services.html" class="text-slate-600 hover:text-indigo-600 transition">Services</a>
+                <a href="portfolio.html" class="text-slate-600 hover:text-indigo-600 transition">Portfolio</a>
+                <a href="pricing.html" class="text-slate-600 hover:text-indigo-600 transition">Pricing</a>
+                <a href="team.html" class="text-slate-600 hover:text-indigo-600 transition">Team</a>
+                <a href="faq.html" class="text-slate-600 hover:text-indigo-600 transition">FAQ</a>
+                <a href="testimonials.html" class="text-slate-600 hover:text-indigo-600 transition">Reviews</a>
+                <a href="blog.html" class="text-slate-600 hover:text-indigo-600 transition">Blog</a>
+                <a href="contact.html" class="text-slate-600 hover:text-indigo-600 transition">Contact</a>
+                <a href="contact.html" class="mt-2 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-rose-500 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-indigo-500/25">
+                    Start Project <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Bright & Energetic Hero Section -->
-    <header class="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-6 bg-cover bg-center z-10" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80');">
-        
-        <!-- Bright Frosted Glass Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-white/95 via-white/90 to-indigo-50/90 backdrop-blur-sm"></div>
+    <!-- ════════════════════════════════════════════ -->
+    <!--  HERO  -->
+    <!-- ════════════════════════════════════════════ -->
+    <header class="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
+        <!-- BG Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80" alt="Office" class="w-full h-full object-cover opacity-20" />
+            <div class="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-indigo-50/90"></div>
+        </div>
 
-        <div class="container mx-auto max-w-5xl text-center relative z-10">
+        <div class="container mx-auto max-w-6xl text-center relative z-10">
+
             <!-- Badge -->
-            <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-slate-200 shadow-md mb-8">
-                <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
-                <span class="text-xs font-extrabold uppercase tracking-widest text-slate-700">Innovation in Digital Media Marketing</span>
-            </span>
+            <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full glass border border-white/60 shadow-md mb-8">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-slate-700">Innovation in Digital Media</span>
+            </div>
 
-            <!-- Main Headline -->
-            <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter text-slate-900 leading-[1.1]">
-                Code that Scales <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-500 drop-shadow-sm">Brands that Dominate</span>
+            <!-- Headline -->
+            <h1 class="text-6xl sm:text-7xl md:text-8xl font-black leading-[1.05] tracking-tight text-slate-900 mb-6">
+                Code that Scales <br />
+                <span class="gradient-text drop-shadow-sm">Brands that Dominate</span>
             </h1>
 
-            <p class="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-                We empower businesses to thrive in a competitive landscape by providing scalable, efficient, and user-friendly digital solutions.
+            <p class="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium mb-10">
+                We empower businesses to thrive in a competitive landscape with scalable,
+                efficient, and user‑friendly digital solutions.
             </p>
 
-            <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-5">
-                <a href="services.html" class="w-full sm:w-auto px-10 py-5 rounded-2xl bg-gradient-to-r from-indigo-600 to-rose-600 text-white font-black tracking-wider uppercase text-sm hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-300 flex items-center justify-center group">
-                    Explore Solutions <i class="fa-solid fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform"></i>
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="services.html" class="w-full sm:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-rose-500 text-white font-black text-sm uppercase tracking-wider shadow-xl shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-105 transition-all duration-300 btn-shine flex items-center justify-center gap-3">
+                    Explore Solutions <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <a href="contact.html" class="w-full sm:w-auto px-10 py-5 rounded-2xl bg-white border border-slate-200 text-slate-900 font-black tracking-wider uppercase text-sm hover:bg-slate-50 hover:shadow-md transition-all duration-300 flex items-center justify-center">
+                <a href="contact.html" class="w-full sm:w-auto px-10 py-4 rounded-2xl glass text-slate-900 font-black text-sm uppercase tracking-wider hover:bg-white/90 hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 border border-slate-200/50">
                     Start a Project
                 </a>
             </div>
+
+           
         </div>
     </header>
 
-    <!-- Clean Tech Stack Marquee -->
-    <div class="border-y border-slate-200 bg-white/80 backdrop-blur-md py-8 shadow-sm relative z-10">
-        <div class="container mx-auto px-6 flex flex-wrap justify-center items-center gap-10 md:gap-20 text-slate-400 font-extrabold text-sm uppercase tracking-widest">
-            <span class="flex items-center hover:text-green-500 transition-colors cursor-pointer"><i class="fa-brands fa-node-js text-2xl mr-3"></i> Node.js</span>
-            <span class="flex items-center hover:text-blue-500 transition-colors cursor-pointer"><i class="fa-brands fa-react text-2xl mr-3"></i> React</span>
-            <span class="flex items-center hover:text-cyan-500 transition-colors cursor-pointer"><i class="fa-solid fa-mobile-screen text-2xl mr-3"></i> Flutter</span>
-            <span class="flex items-center hover:text-indigo-600 transition-colors cursor-pointer"><i class="fa-solid fa-chart-line text-2xl mr-3"></i> Data Analytics</span>
-            <span class="flex items-center hover:text-orange-500 transition-colors cursor-pointer"><i class="fa-brands fa-aws text-2xl mr-3"></i> AWS</span>
+    <!-- ════════════════════════════════════════════ -->
+    <!--  TECH MARQUEE  -->
+    <!-- ════════════════════════════════════════════ -->
+    <div class="border-y border-slate-200/60 glass py-5 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 text-slate-400 font-extrabold text-xs uppercase tracking-widest">
+                <span class="flex items-center gap-2 hover:text-emerald-500 transition-colors cursor-pointer"><i class="fa-brands fa-node-js text-2xl"></i> Node.js</span>
+                <span class="flex items-center gap-2 hover:text-cyan-500 transition-colors cursor-pointer"><i class="fa-brands fa-react text-2xl"></i> React</span>
+                <span class="flex items-center gap-2 hover:text-indigo-500 transition-colors cursor-pointer"><i class="fa-solid fa-mobile-screen text-2xl"></i> Flutter</span>
+                <span class="flex items-center gap-2 hover:text-amber-500 transition-colors cursor-pointer"><i class="fa-solid fa-chart-line text-2xl"></i> Analytics</span>
+                <span class="flex items-center gap-2 hover:text-orange-500 transition-colors cursor-pointer"><i class="fa-brands fa-aws text-2xl"></i> AWS</span>
+            </div>
         </div>
     </div>
 
-    <!-- Vibrant Stats Bar -->
+    <!-- ════════════════════════════════════════════ -->
+    <!--  STATS  -->
+    <!-- ════════════════════════════════════════════ -->
     <section class="py-16 relative z-10">
         <div class="container mx-auto px-6 max-w-7xl">
-            <div class="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-[3rem] p-12 shadow-2xl relative overflow-hidden">
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-0 left-0 w-64 h-64 bg-rose-500/20 rounded-full blur-3xl"></div>
-                
+            <div class="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-slate-900 to-indigo-950 p-10 sm:p-14 shadow-2xl">
+                <!-- decorative -->
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-rose-500/20 rounded-full blur-3xl"></div>
+
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
                     <div>
-                        <h3 class="text-5xl font-black text-cyan-400 mb-2">100%</h3>
-                        <p class="text-xs text-slate-300 uppercase tracking-widest font-bold">Custom Code</p>
+                        <div class="stat-number text-cyan-400">100%</div>
+                        <p class="text-xs text-slate-300 uppercase tracking-widest font-bold mt-1">Custom Code</p>
                     </div>
                     <div>
-                        <h3 class="text-5xl font-black text-rose-400 mb-2">360°</h3>
-                        <p class="text-xs text-slate-300 uppercase tracking-widest font-bold">Marketing Growth</p>
+                        <div class="stat-number text-rose-400">360°</div>
+                        <p class="text-xs text-slate-300 uppercase tracking-widest font-bold mt-1">Marketing Growth</p>
                     </div>
                     <div>
-                        <h3 class="text-5xl font-black text-indigo-400 mb-2">24/7</h3>
-                        <p class="text-xs text-slate-300 uppercase tracking-widest font-bold">Client Support</p>
+                        <div class="stat-number text-indigo-400">24/7</div>
+                        <p class="text-xs text-slate-300 uppercase tracking-widest font-bold mt-1">Client Support</p>
                     </div>
                     <div>
-                        <h3 class="text-5xl font-black text-rose-400 mb-2">Top</h3>
-                        <p class="text-xs text-slate-300 uppercase tracking-widest font-bold">Rated Agency</p>
+                        <div class="stat-number text-rose-400">Top</div>
+                        <p class="text-xs text-slate-300 uppercase tracking-widest font-bold mt-1">Rated Agency</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Light & Airy Capabilities Section -->
-    <section class="pb-32 pt-16 relative z-10">
+    <!-- ════════════════════════════════════════════ -->
+    <!--  SERVICES / CAPABILITIES  -->
+    <!-- ════════════════════════════════════════════ -->
+    <section id="services" class="py-16 relative z-10">
         <div class="container mx-auto px-6 max-w-7xl">
-            <div class="text-center mb-16">
-                <span class="text-rose-600 font-black tracking-widest uppercase mb-2 block text-xs">Our Capabilities</span>
-                <h3 class="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">The Hybrid Advantage</h3>
-                <p class="text-slate-600 max-w-2xl mx-auto text-lg font-medium">Why hire separate agencies? Get high-end software development, business intelligence, and aggressive digital marketing under one roof.</p>
+
+            <div class="text-center mb-16 reveal">
+                <span class="text-rose-600 font-black tracking-[0.2em] uppercase text-xs block mb-2">Our Capabilities</span>
+                <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mb-4 tracking-tight">The Hybrid Advantage</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto text-lg font-medium">
+                    Why hire separate agencies? Get high-end software development, business intelligence,
+                    and aggressive digital marketing under one roof.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                
-                <!-- Software House Card -->
-                <div class="bg-white/80 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(99,102,241,0.05)] border border-white hover:shadow-[0_20px_60px_rgba(99,102,241,0.15)] hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden flex flex-col">
-                    <div class="absolute top-0 right-0 w-48 h-48 bg-indigo-50 rounded-bl-full -z-10 group-hover:scale-125 transition-transform duration-700"></div>
-                    <div>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 py-1.5 px-4 rounded-full mb-8 inline-block border border-indigo-100 shadow-sm">Engineering & Data</span>
-                        <h4 class="text-3xl font-black text-slate-900 mb-4 tracking-tight">Custom Web & App Engineering</h4>
-                        <p class="text-slate-600 leading-relaxed mb-8 font-medium">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Software House -->
+                <div class="tilt-card glass rounded-[2.5rem] p-10 border border-white/50 shadow-xl shadow-indigo-500/5 hover:shadow-indigo-500/15 transition-all duration-500 relative overflow-hidden group">
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-indigo-400/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="relative">
+                        <span class="inline-block text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50/80 px-4 py-1.5 rounded-full border border-indigo-100/60 mb-6">Engineering &amp; Data</span>
+                        <h3 class="text-3xl font-black text-slate-900 mb-4 tracking-tight">Custom Web &amp; App Engineering</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6 font-medium">
                             No slow templates. We build robust digital products and Business Intelligence solutions using modern tech stacks.
                         </p>
-                        <ul class="space-y-4 text-slate-700 font-bold mb-8">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-indigo-500 mr-3 text-lg"></i> Web & Mobile Development</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-indigo-500 mr-3 text-lg"></i> Business Intelligence & Analytics</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-indigo-500 mr-3 text-lg"></i> Scalable Cloud Solutions</li>
+                        <ul class="space-y-3 text-slate-700 font-bold mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-indigo-500 text-lg"></i> Web &amp; Mobile Development</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-indigo-500 text-lg"></i> Business Intelligence &amp; Analytics</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-indigo-500 text-lg"></i> Scalable Cloud Solutions</li>
                         </ul>
+                        <a href="services.html" class="inline-flex items-center gap-2 text-indigo-600 font-black text-xs uppercase tracking-widest hover:text-indigo-800 transition">
+                            Explore Engineering <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
-                    <a href="services.html" class="text-indigo-600 font-black flex items-center hover:text-indigo-800 mt-auto uppercase tracking-widest text-xs">Explore Engineering <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i></a>
                 </div>
 
-                <!-- Digital Marketing Card -->
-                <div class="bg-white/80 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(244,63,94,0.05)] border border-white hover:shadow-[0_20px_60px_rgba(244,63,94,0.15)] hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden flex flex-col">
-                    <div class="absolute top-0 right-0 w-48 h-48 bg-rose-50 rounded-bl-full -z-10 group-hover:scale-125 transition-transform duration-700"></div>
-                    <div>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-rose-600 bg-rose-50 py-1.5 px-4 rounded-full mb-8 inline-block border border-rose-100 shadow-sm">360° Marketing</span>
-                        <h4 class="text-3xl font-black text-slate-900 mb-4 tracking-tight">Digital Growth & Performance</h4>
-                        <p class="text-slate-600 leading-relaxed mb-8 font-medium">
+                <!-- Digital Marketing -->
+                <div class="tilt-card glass rounded-[2.5rem] p-10 border border-white/50 shadow-xl shadow-rose-500/5 hover:shadow-rose-500/15 transition-all duration-500 relative overflow-hidden group">
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-rose-400/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="relative">
+                        <span class="inline-block text-[10px] font-black uppercase tracking-widest text-rose-600 bg-rose-50/80 px-4 py-1.5 rounded-full border border-rose-100/60 mb-6">360° Marketing</span>
+                        <h3 class="text-3xl font-black text-slate-900 mb-4 tracking-tight">Digital Growth &amp; Performance</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6 font-medium">
                             Turn traffic into revenue. We manage aggressive Meta Marketing, technical SEO, and data-backed ad campaigns.
                         </p>
-                        <ul class="space-y-4 text-slate-700 font-bold mb-8">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-rose-500 mr-3 text-lg"></i> Targeted Meta & Google Ads</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-rose-500 mr-3 text-lg"></i> Technical & Off-Page SEO</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-rose-500 mr-3 text-lg"></i> Full-Funnel Lead Generation</li>
+                        <ul class="space-y-3 text-slate-700 font-bold mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-rose-500 text-lg"></i> Targeted Meta &amp; Google Ads</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-rose-500 text-lg"></i> Technical &amp; Off-Page SEO</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-rose-500 text-lg"></i> Full-Funnel Lead Generation</li>
                         </ul>
+                        <a href="services.html" class="inline-flex items-center gap-2 text-rose-600 font-black text-xs uppercase tracking-widest hover:text-rose-800 transition">
+                            Explore Marketing <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
-                    <a href="services.html" class="text-rose-600 font-black flex items-center hover:text-rose-800 mt-auto uppercase tracking-widest text-xs">Explore Marketing <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i></a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Crisp Professional Footer -->
-    <footer class="bg-slate-900 text-slate-400 p-12 mt-auto border-t border-slate-800 relative z-10">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl">
-            
-            <div class="text-center md:text-left">
-                <!-- Professional Logo & Slogan Combo in Footer -->
-                <a href="index.html" class="flex items-center justify-center md:justify-start space-x-3 group mb-6">
-                    <div class="w-10 h-10 bg-gradient-to-tr from-indigo-600 to-rose-500 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-all duration-300">
-                        <i class="fa-solid fa-globe text-white text-lg"></i>
+    <!-- ════════════════════════════════════════════ -->
+    <!--  FEATURED WORK – KIDCO GLOBAL  -->
+    <!-- ════════════════════════════════════════════ -->
+    <section id="portfolio" class="py-16 relative z-10">
+        <div class="container mx-auto px-6 max-w-7xl">
+
+            <div class="text-center mb-12 reveal">
+                <span class="text-indigo-600 font-black tracking-[0.2em] uppercase text-xs block mb-2">Featured Work</span>
+                <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mb-4 tracking-tight">Our Masterpiece</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto text-lg font-medium">
+                    Take a look at how we build and scale digital media assets from the ground up.
+                </p>
+            </div>
+
+            <div class="max-w-md mx-auto reveal">
+                <!-- YouTube channel link added here -->
+                <a href="http://www.youtube.com/channel/UCKog0hqLD3Opkec8PNBHijw" target="_blank" class="block glass rounded-[2.5rem] border border-white/50 shadow-xl shadow-rose-500/5 hover:shadow-rose-500/20 hover:-translate-y-3 transition-all duration-500 group overflow-hidden no-underline">
+
+                    <!-- Card cover -->
+                    <div class="h-56 bg-gradient-to-br from-rose-500 to-red-600 flex flex-col items-center justify-center text-white relative px-4 text-center overflow-hidden">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
+                        <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+
+                        <!-- Channel Logo Image -->
+                        <!-- AHSAN BHAI YAHAN APNI PICTURE KA SAHI PATH (NAME) DAALAIN -->
+                        <div class="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-xl border-4 border-white/80 mb-3 relative z-10 overflow-hidden transform group-hover:scale-110 transition-transform duration-500">
+                            <img src="Kidco.jpeg" alt="Kidco Global Logo" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="font-black tracking-wider text-xl relative z-10">Kidco Global</span>
                     </div>
-                    <div class="flex flex-col text-left">
-                        <span class="text-lg font-black tracking-wider text-white leading-tight">
-                            GLOBAL <span class="text-rose-400">STATION</span>
+
+                    <!-- Card body -->
+                    <div class="p-8 relative bg-white/40">
+                        <span class="absolute -top-4 left-8 bg-white text-[10px] font-black uppercase tracking-widest text-rose-600 py-1.5 px-4 rounded-full shadow-md border border-rose-100/60">
+                            YouTube
                         </span>
-                        <span class="text-[9px] uppercase tracking-widest text-indigo-300 font-semibold">
-                            Your Digital Media Stop
-                        </span>
+
+                        <h3 class="text-2xl font-black text-slate-900 mt-2 mb-3 tracking-tight">Animated Kids Content</h3>
+                        <p class="text-slate-600 font-medium leading-relaxed mb-6">
+                            A vibrant YouTube channel featuring engaging and educational animated content for children, managed through optimized digital media and growth strategies.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100/80 text-slate-600 px-3 py-1.5 rounded-lg border border-slate-200/60">Video Editing</span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100/80 text-slate-600 px-3 py-1.5 rounded-lg border border-slate-200/60">Animation</span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100/80 text-slate-600 px-3 py-1.5 rounded-lg border border-slate-200/60">YouTube SEO</span>
+                        </div>
                     </div>
                 </a>
-                
-                <p class="text-sm mb-3 font-medium flex items-center justify-center md:justify-start"><i class="fa-solid fa-location-dot mr-3 text-cyan-400 w-4"></i> Office Number 3-5, First Floor Murat Khan Centre, 4 Montgomery Road Lahore</p>
-                <p class="text-sm mb-3 font-medium flex items-center justify-center md:justify-start"><i class="fa-solid fa-envelope mr-3 text-cyan-400 w-4"></i> Marketing@globalstation.org | www.globalstation.org</p>
-                <p class="text-sm font-medium flex items-center justify-center md:justify-start"><i class="fa-solid fa-phone mr-3 text-cyan-400 w-4"></i>+92 321 289 5218 | +92 318 442 2191</p>
             </div>
-            
-            <div class="flex space-x-6 items-center">
-                <a href="https://www.facebook.com/profile.php?id=61593209751314" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-cyan-500 hover:text-slate-900 transition-all duration-300 text-xl"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/globalstation34/" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-rose-500 hover:text-white transition-all duration-300 text-xl"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://x.com/GlobalStation34" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 text-xl"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="linkedin.com/company/global-satition-34" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-indigo-500 hover:text-white transition-all duration-300 text-xl"><i class="fa-brands fa-linkedin-in"></i></a>
-                <span class="text-slate-700">|</span>
-                <a href="#" target="_blank" class="hover:text-green-400 transition-colors duration-300 font-bold text-xl flex items-center" title="Fiverr"><i>fi</i>verr.</a>
-                <a href="https://www.upwork.com/freelancers/~01f09a39c3a6b95fa4?mp_source=share" target="_blank" class="hover:text-green-500 transition-colors duration-300 font-bold text-xl flex items-center" title="Upwork">Upwork</a>
+
+            <div class="text-center mt-12 reveal">
+                <a href="portfolio.html" class="inline-flex items-center gap-2 text-slate-500 font-black hover:text-indigo-600 uppercase tracking-widest text-xs transition-colors border-b-2 border-transparent hover:border-indigo-600 pb-1">
+                    View Full Portfolio <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
             </div>
         </div>
-        <div class="text-center mt-10 pt-8 border-t border-slate-800 text-sm font-bold tracking-wide">
-            <p>&copy; 2026 Global Station Innovation in Digital Media Marketing</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!--  TESTIMONIALS  -->
+    <!-- ════════════════════════════════════════════ -->
+    <section id="testimonials" class="py-16 relative z-10">
+        <div class="container mx-auto px-6 max-w-7xl">
+
+            <div class="text-center mb-12 reveal">
+                <span class="text-amber-600 font-black tracking-[0.2em] uppercase text-xs block mb-2">Testimonials</span>
+                <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mb-4 tracking-tight">What Our Clients Say</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto text-lg font-medium">Real stories from real partners who trusted us with their digital growth.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="glass rounded-2xl p-8 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 reveal">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-700 font-medium leading-relaxed mb-4">“Global Station transformed our online presence completely. Our traffic tripled in just 3 months. Absolutely phenomenal team.”</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-black">JD</div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">John D.</p>
+                            <p class="text-xs text-slate-400">CEO, TechFlow</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-8 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 reveal" style="transition-delay:0.1s">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-700 font-medium leading-relaxed mb-4">“The software they built for us is rock-solid. Their BI dashboards gave us insights we never had before. Highly recommend.”</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 font-black">SM</div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">Sarah M.</p>
+                            <p class="text-xs text-slate-400">COO, DataViz</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-8 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 reveal" style="transition-delay:0.2s">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-700 font-medium leading-relaxed mb-4">“Their marketing team is next-level. We saw a 4x ROAS within the first month. They truly understand the digital landscape.”</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-black">AK</div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">Alex K.</p>
+                            <p class="text-xs text-slate-400">Founder, Bloom Retail</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!--  CTA BANNER  -->
+    <!-- ════════════════════════════════════════════ -->
+    <section class="py-20 relative z-10">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-indigo-600 to-rose-500 p-12 sm:p-16 text-center shadow-2xl shadow-indigo-500/30">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+
+                <div class="relative z-10">
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mb-4 tracking-tight">Ready to Scale Your Brand?</h2>
+                    <p class="text-white/80 text-lg font-medium max-w-xl mx-auto mb-8">
+                        Let’s build something extraordinary together. Get a free consultation today.
+                    </p>
+                    <a href="contact.html" class="inline-flex items-center gap-3 px-10 py-4 rounded-2xl bg-white text-slate-900 font-black text-sm uppercase tracking-wider shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                        Get Started <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!--  FOOTER  -->
+    <!-- ════════════════════════════════════════════ -->
+    <footer class="bg-slate-900 text-slate-400 pt-16 pb-8 border-t border-slate-800/60 relative z-10">
+        <div class="container mx-auto px-6 max-w-7xl">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800/60">
+
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 group mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-rose-500 flex items-center justify-center shadow-lg">
+                            <i class="fa-solid fa-globe text-white text-lg"></i>
+                        </div>
+                        <div class="leading-tight">
+                            <span class="text-lg font-black tracking-wider text-white">GLOBAL <span class="text-rose-400">STATION</span></span>
+                            <div class="text-[9px] uppercase tracking-[0.2em] text-indigo-300 font-semibold">Your Digital Media Stop</div>
+                        </div>
+                    </a>
+                    <p class="text-sm font-medium leading-relaxed mb-4">Office Number 3-5, First Floor Murat Khan Centre, 4 Montgomery Road Lahore</p>
+                    <p class="text-sm font-medium flex items-center gap-3 mb-2"><i class="fa-solid fa-envelope text-cyan-400 w-4"></i> Marketing@globalstation.org</p>
+                    <p class="text-sm font-medium flex items-center gap-3"><i class="fa-solid fa-phone text-cyan-400 w-4"></i> +92 321 289 5218 &bull; +92 318 442 2191</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm font-medium">
+                        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">About</a></li>
+                        <li><a href="services.html" class="hover:text-white transition">Services</a></li>
+                        <li><a href="portfolio.html" class="hover:text-white transition">Portfolio</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="team.html" class="hover:text-white transition">Team</a></li>
+                        <li><a href="faq.html" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="testimonials.html" class="hover:text-white transition">Reviews</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm font-medium">
+                        <li><a href="services.html" class="hover:text-white transition">Web Development</a></li>
+                        <li><a href="services.html" class="hover:text-white transition">Mobile Apps</a></li>
+                        <li><a href="services.html" class="hover:text-white transition">Digital Marketing</a></li>
+                        <li><a href="services.html" class="hover:text-white transition">SEO &amp; Analytics</a></li>
+                        <li><a href="services.html" class="hover:text-white transition">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social -->
+                <div>
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest mb-4">Connect</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.facebook.com/profile.php?id=61593209751314" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-cyan-500 hover:text-slate-900 transition-all duration-300 text-xl">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/globalstation34/" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-rose-500 hover:text-white transition-all duration-300 text-xl">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/GlobalStation34" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 text-xl">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/global-satition-34" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-indigo-500 hover:text-white transition-all duration-300 text-xl">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-emerald-500 hover:text-white transition-all duration-300 text-sm font-black">
+                            fi
+                        </a>
+                        <a href="https://www.upwork.com/freelancers/~01f09a39c3a6b95fa4?mp_source=share" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-emerald-500 hover:text-white transition-all duration-300 text-sm font-black">
+                            Up
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom -->
+            <div class="pt-8 text-center text-sm font-bold tracking-wide">
+                <p>&copy; 2026 Global Station — Innovation in Digital Media Marketing</p>
+            </div>
+
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/923212895218?text=Hi%20Global%20Station,%20I%20need%20help%20with%20a%20project!" 
-       target="_blank" 
-       class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-[0_10px_20px_rgba(34,197,94,0.3)] hover:bg-green-600 hover:scale-110 transition-transform duration-300 z-50 flex items-center justify-center text-3xl w-16 h-16">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- ════════════════════════════════════════════ -->
+    <!--  FLOATING WHATSAPP  -->
+    <!-- ════════════════════════════════════════════ -->
+    <a href="https://wa.me/923212895218?text=Hi%20Global%20Station,%20I%20need%20help%20with%20a%20project!"
+    target="_blank"
+    class="fixed bottom-6 right-6 bg-emerald-500 text-white p-4 rounded-full shadow-2xl shadow-emerald-500/40 hover:bg-emerald-600 hover:scale-110 transition-all duration-300 z-50 flex items-center justify-center text-3xl w-16 h-16">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- ════════════════════════════════════════════ -->
+<!--  SCRIPTS  -->
+<!-- ════════════════════════════════════════════ -->
+<script>
+    // ── Mobile menu toggle ──
+    const toggle = document.getElementById('mobileToggle');
+    const menu = document.getElementById('mobileMenu');
+    let open = false;
+
+    toggle.addEventListener('click', () => {
+        open = !open;
+        menu.style.maxHeight = open ? '400px' : '0';
+        toggle.innerHTML = open ? '<i class="fa-solid fa-xmark text-lg"></i>' :
+            '<i class="fa-solid fa-bars text-lg"></i>';
+    });
+
+    // ── Close mobile menu on link click ──
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            open = false;
+            menu.style.maxHeight = '0';
+            toggle.innerHTML = '<i class="fa-solid fa-bars text-lg"></i>';
+        });
+    });
+
+    // ── Scroll reveal (Intersection Observer) ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+    });
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Nav active state on scroll ──
+    const sections = ['home', 'about', 'services', 'portfolio', 'pricing', 'team', 'faq', 'testimonials', 'blog',
+        'contact'
+    ];
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = 'home';
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                const top = el.offsetTop - 120;
+                if (window.scrollY >= top) current = id;
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current || (current === 'home' && link.getAttribute(
+                    'href') === '#')) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
